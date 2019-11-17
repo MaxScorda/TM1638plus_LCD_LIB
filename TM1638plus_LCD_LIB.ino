@@ -20,7 +20,6 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   ioi.keyboardInit(4, 37, 35, 33);
-
   initLiquidCrystal();
 }
 

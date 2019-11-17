@@ -27,22 +27,25 @@ void readTM1638() {
 //-------------liquid crystal
 void scrollLiquidCrystal() {
   static long previous = millis();
+  String stri;
   int msStop = 500;
   if (previous + msStop <= millis()) {
     previous =  millis();
     elabKey();
     lcd.setCursor(0, 1);
-    lcd.print( ScrollFunction(line1, 0));
+    stri=ScrollFunction(line1, 0);
+    lcd.print( stri);
+    Serial.println(stri);
   }
 }
 
 String ScrollFunction(String lline, int riga) {
   int copySize = 16;
-  static int ppos = copySize;
-  static String stToPrnt = lline.substring(0, copySize);
+  static int ppos = 0;
+  static String stToPrnt = padS("",copySize," ");
 
   ppos = ppos % lline.length();
-  stToPrnt = stToPrnt.substring(2) + lline.substring(ppos + 1,ppos + 2 );
+  stToPrnt = stToPrnt.substring(1) + lline.substring(ppos ,ppos + 1 );
   ppos++;
 
   return stToPrnt;
