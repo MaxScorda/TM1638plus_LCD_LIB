@@ -19,7 +19,7 @@ void readTM1638() {
     Serial.println(buttons);
     vars = padS(String(buttons), 8, " ");
     vars.toCharArray(buffer, buffer_len);
-   TM.DisplayStr(buffer, 0);
+   ioi.DisplayStr(buffer, 0);
   }
 
 }
@@ -87,13 +87,14 @@ void elabKey() {
 int read_LCD_buttons() {
   int adc_key_in  = 0;
   adc_key_in = analogRead(0);      // read the value from the sensor
-
+  Serial.println(adc_key_in);
   if (adc_key_in < 60)   return btnRIGHT;
-  else if (adc_key_in < 200) return btnUP;
-  else if (adc_key_in < 400) return btnDOWN;
-  else if (adc_key_in < 550) return btnLEFT;
+  else if (adc_key_in < 150) return btnUP;
+  else if (adc_key_in < 300) return btnDOWN;
+  else if (adc_key_in < 500) return btnLEFT;
   else if (adc_key_in < 800) return btnSELECT;
   else if (adc_key_in > 800) return btnNONE;
+  Serial.println(adc_key_in);
 
   return btnNONE;  // when all others fail, return this...
 }

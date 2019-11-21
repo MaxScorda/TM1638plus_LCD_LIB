@@ -1,5 +1,4 @@
 #include <IOInt.h>
-#include <TM1638plus_Model2.h> //da togliee
 #include <LiquidCrystal.h>
 #define btnRIGHT  0
 #define btnUP     1
@@ -7,11 +6,10 @@
 #define btnLEFT   3
 #define btnSELECT 4
 #define btnNONE   5
-
+ 
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
-IOINT ioi(13, 9, 10, 11, 12); //lcd5110
-TM1638plus_Model2 TM(37, 35 , 33, true); //da togliere
+IOINT ioi(13, 3, 10, 11, 12); //lcd5110
 
 String line1 = "Il pezzo d'hardware piu' inutile che abbia mai fatto. E ci sto pure a perdere tempo.";
 String line2 = " Una realizazione Cane Nico Morto Production (c) 2014 ";
